@@ -1,5 +1,5 @@
 const { Client } = require('@elastic/elasticsearch')
-const moment = require('moment');
+const dateUtil = require('../../common/util/dateUtil');
 
 module.exports = async function upsert(body){
     const client = new Client({
@@ -14,7 +14,7 @@ module.exports = async function upsert(body){
          { "update": { "_id" : `${data.id}`, "retry_on_conflict": 3 }},
          { "doc": {
              ...data,
-             timestamp : moment(new Date()).valueOf()
+             timestamp : dateUtil.getCurrentTimeStamp()
          }, "doc_as_upsert" : true} 
     ])
 

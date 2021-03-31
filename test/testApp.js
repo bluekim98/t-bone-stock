@@ -9,7 +9,7 @@ const testModuleObject = {
         'util/dateUtilTest',
     ],
     'service' : [
-
+        'quarterlyReportServiceTest'
     ],
 };
 

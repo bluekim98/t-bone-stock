@@ -3,7 +3,7 @@ const consensusService = require('../../service/consensusService');
 const stockService = require('../../service/stockService');
 const consensusParser = require('../../common/parser/consensusParser');
 const stockParser = require('../../common/parser/stockParser');
-const dartService = require('../../service/dartStockService');
+const quarterlyReportService = require('../../service/quarterlyReportService');
 
 function api(app){
     app.get('/sectors/all', async (req, res) => {
@@ -33,7 +33,19 @@ function api(app){
     app.post('/report/quarter', async (req, res) => {
         console.log('post report quarter');
         let { fileName, year, quarter } = req.query;
-        res.send(await dartService.addQuarterlyReport({ fileName, year, quarter }));
+        res.send(await quarterlyReportService.addQuarterlyReport({ fileName, year, quarter }));
+    })
+
+    app.get('/report/quarter/company', async (req, res) => {
+        console.log('get report quarter company');
+        let {year, quarter, companyCode} = req.query;
+        res.send(await quarterlyReportService.getQuarterlyReport({year, quarter, companyCode}));
+    })
+
+    app.get('/report/quarter/all', async (req, res) => {
+        console.log('get report quarter all');
+        let {year, quarter} = req.query;
+        res.send(await quarterlyReportService.getAllCompaniesQuarterlyReports({year, quarter}));
     })
 }
 
