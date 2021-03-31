@@ -57,8 +57,6 @@ const quarterlyReportService = {
             FROM    tbonestock
             WHERE   id LIKE '%${documentIdLikly}%'
         `;
-        
-        // WHERE   _id LIKE %${documentIdLikly}%
         console.log(query);
         return await elasticSearchService.sqlQuery(query);
     }
