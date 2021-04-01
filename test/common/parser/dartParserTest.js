@@ -7,7 +7,7 @@ module.exports = async function dartParserTest() {
     const LG_INNOTEK_CODE = '011070';
     const LG_INNOTEK_NAME = 'LG이노텍';
 
-    (async function getAllCompanyNameObjectOf(){
+    await (async function getAllCompanyNameObjectOf(){
         // given
         const filePath = 'dart/2020';
         const fileName = '2020_1분기보고서_손익계산서_PL.xlsx';
@@ -25,7 +25,7 @@ module.exports = async function dartParserTest() {
 
     }());
 
-    (async function __getValueCode(){
+    await (async function __getValueCode(){
         // given
         const filePath = 'dart/2020';
         const fileName = '2020_1분기보고서_손익계산서_PL.xlsx';
@@ -44,7 +44,7 @@ module.exports = async function dartParserTest() {
 
     }());
 
-    (async function getVerifiedCorporateReportsOf(){
+    await (async function getVerifiedCorporateReportsOf(){
         // given
         const filePath = 'dart/2020';
         const fileName = '2020_1분기보고서_손익계산서_PL.xlsx';

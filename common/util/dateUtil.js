@@ -22,8 +22,21 @@ const dateUtil = {
         if(currentHour < 16) return moment().add(-1, 'days').startOf('day').format(format);
         else return moment().startOf('day').format(format);
     },
-    getCurrentTimeStamp: function() {
-        return moment().format(this.TIMESTAMP_FORMAT);
+    getLatelyFourQuarters : function() {
+        let quarters = [];
+        for(let i=1; i<=4; i++) {
+            let year = this.getYearBeforeMonths(i*3+3);
+            let quarter = this.getQuarterBeforeMonths(i*3+3);
+            let quarterObject = {
+                year,
+                quarter
+            }
+            quarters.push(quarterObject);
+        }
+        return quarters;
+    },
+    getCurrentTimeStampWithFormat: function(format = this.TIMESTAMP_FORMAT) {
+        return moment().format(format);
     }
 }
 

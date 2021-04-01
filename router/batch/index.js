@@ -1,6 +1,7 @@
 const daumStockService = require('../../service/daumStockService');
 const fnguideService = require('../../service/fnguideService');
 const elasticService = require('../../service/elasticsearch');
+const corporateFinancialService = require('../../service/corporateFinancialService');
 
 function batch(app){
     app.get('/updateStockPrice', async (req, res) => {
@@ -31,6 +32,12 @@ function batch(app){
         fnguideService.upsertCompanyQaurterlyConsensusWithCallingInterval(interval);
     
         res.send(`Stack All company's consensus.`);
+    });
+
+    app.put('/corporateFinancial/today', async (req, res) => {
+        console.log('fetch /corporateFinancial/today');
+        const response = await corporateFinancialService.updateTodaysCorporateFinancial();        
+        res.send(response);
     });
 }
 
