@@ -32,7 +32,7 @@ function api(app){
 
     app.post('/report/quarter', async (req, res) => {
         console.log('post report quarter');
-        let { fileName, year, quarter } = req.query;
+        let { fileName, year, quarter } = req.body;
         res.send(await quarterlyReportService.addQuarterlyReport({ fileName, year, quarter }));
     })
 
