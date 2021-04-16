@@ -1,5 +1,9 @@
 # t-bone-stock
+
+
 가치투자주식어플
+
+
 
 #Application
 node.js
